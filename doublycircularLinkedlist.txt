@@ -1,0 +1,92 @@
+doublycircularLinkeList
+
+package circularLinkedpractice;
+
+public class doublycircularLinked {
+	
+	Node head;
+	Node tail;
+	int size;
+	public circularLinked() {
+		
+		this.head = null;
+		this.tail = null;
+		this.size=0;
+	}
+	
+	public void addfirst(int data) {
+		Node newnode=new Node(data);
+		 if(head==null) {
+			 head=newnode;
+			 tail=newnode;
+		}else {
+			newnode.next=head;
+			head.prv=newnode;
+			tail.next=newnode;
+			head=newnode;
+		}
+	}
+	
+	public void addlast(int data) {
+		Node newnode =new Node(data);
+		if(head==null) {
+			head=newnode;
+			tail=newnode;
+		}else {
+			Node trav=head;
+			while(trav!=null) {
+				trav=trav.next;
+			}
+			trav.next=newnode;
+			
+			
+		}
+	}
+	
+	public void sort() {
+		Node i=head;
+		Node j=null;
+		
+		
+		do {
+			j=i.next;
+			while(j!=head) {
+				if(i.data>j.data) {
+					int temp=i.data;
+					i.data=j.data;
+					j.data=temp;
+				}
+				j=j.next;
+			}
+			i=i.next;
+			
+		}while(i!=head);
+	}
+	
+	public void display() {
+		if(head==null) {
+			System.out.println("list is empty");
+		}else {
+			Node trav=head;
+			 do{
+				System.out.println(trav.data);
+				trav=trav.next;
+			}while(trav!=head);
+		}
+			
+	}
+	
+	public static void main(String[] args) {
+		circularLinked c1 =new circularLinked();
+		c1.addfirst(40);
+		c1.addfirst(25);
+		c1.addfirst(10);
+		c1.addfirst(2);
+		c1.addfirst(85);
+		c1.display();
+		c1.sort();
+		c1.display();
+		
+	}
+	
+}
