@@ -1,0 +1,25 @@
+public int findmax() {
+		int max=head.data;
+		Node trav=head;
+		while(trav!=null) {
+			if(trav.data>max) {
+				max=trav.data;
+				}
+			trav=trav.next;
+			
+			}
+		return max;
+	}
+	
+public int findmin() {
+		int min=head.data;
+		Node trav=head;
+		while(trav!=null) {
+			if(trav.data<min) {
+				min=trav.data;
+				}
+			trav=trav.next;
+			
+			}
+		return min;
+	}

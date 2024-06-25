@@ -1,0 +1,30 @@
+package binarysearch;
+
+public class binarysearch {
+	public static int  binarysearch(int []arr,int key){
+		int left=0;
+		int right=arr.length-1;
+		
+		while(left<=right) {
+			int mid =(left+right)/2;
+			if (key==arr[mid]) 
+				return mid;
+			if(key<arr[mid]) 
+				return right=mid-1;
+			else 
+				return left=mid+1;
+	}
+		return -1;
+}
+	public static void main(String[] args) {
+		int [] arr= {10,11,15,9,15,110,20};
+		int target=20;
+		int result=binarysearch(arr, target);
+		if(result==-1) {
+			System.out.println("no found");
+		}else {
+			System.out.println("element found at "+arr[result]+" position"+result);
+		}
+	}
+	
+}

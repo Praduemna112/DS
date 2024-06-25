@@ -1,0 +1,62 @@
+package stackpractice;
+
+public class stack {
+ int []arr;
+ int top;
+ int size;
+ int count;
+ 
+ public stack(int size) {
+	 this.arr=new int[size];
+	 this.top=-1;
+	 this.size=size;
+	 this.count=0;
+ }
+ 
+ public boolean isEmpty() {
+	return (top==-1);
+ }
+ 
+ public boolean isfull() {
+	 return (top==size-1);
+ }
+ 
+ public void push(int data) {
+	 if(isfull()) {
+		 System.out.println("stack is overflow");
+	 }else {
+		 arr[++top]=data;
+		 count++;
+	 }
+ }
+ 
+ public int pop() {
+	 if(isEmpty()) {
+		 System.out.println("stack is underflow");
+	 }
+	 return arr[top--];
+	 
+ }
+ 
+ public void display() {
+	 if(isEmpty()) {
+		 System.out.println("stack is empty");
+	 }else {
+		for(int i=top;i>=0;i--) {
+			System.out.println(arr[i]);
+		}
+	 }
+ }
+ public static void main(String[] args) {
+	stack s1=new stack(4);
+	
+	s1.push(12);
+	s1.push(12);
+	s1.push(12);
+	s1.display();
+	System.out.println();
+	s1.pop();
+	s1.display();
+}
+}
+ 

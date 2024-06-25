@@ -1,0 +1,157 @@
+node
+
+public class Node {
+	public int data;
+	public Node prev;
+	public Node next;
+	public int pos;
+	
+	public Node(int data) {
+	
+		this.data = data;
+		this.prev = null;
+		this.next = null;
+	}
+
+	public Node(int val, int pos) {
+		this.data=val;
+		this.pos=pos;
+	}	
+}
+
+
+
+package doublypractice;
+
+public class doubleLinkedList {
+	public Node head;
+	int count;
+
+	public doubleLinkedList() {
+		this.head = null;
+		this.count=0;
+	}
+
+	public void addfirst(int val) {
+		Node newnode = new Node(val);
+		if (head == null) {
+			head = newnode;
+		} else {
+			Node trav = head;
+			while (trav.next != null) {		
+			trav = trav.next;
+		}
+			newnode.next = head;
+			head.prev = newnode;
+			head = newnode;
+		}
+		count++;
+	}
+
+	public void addlast(int val) {
+		Node newnode = new Node(val);
+		if (head == null) {
+			head = newnode;
+		}else {
+			Node trav=head;//null
+			while(trav.next!=null) {
+				trav=trav.next;
+			}
+			trav.next=newnode;
+			newnode.prev=trav;
+			
+		}
+		count++;
+	}
+	
+	public void Atmiddleadd(int val,int pos) {
+		Node newnode =new Node(val,pos);
+		if(pos==0) {
+			addfirst(val);
+		}else if(pos==count) {
+			addlast(val);
+		}else {
+			Node trav=head;
+			int travposi=0;
+			while(trav!=null && travposi<pos-1 ) {
+				trav=trav.next;
+				travposi++;
+			}
+			newnode.next=trav.next;
+			trav.next=newnode;
+			newnode.prev=trav;	
+		}
+	}
+	
+	public void deletefirst() {
+		head=head.next;
+	}
+	
+	public void deletelast() {
+		Node trav =head;
+		while(trav.next.next!=null) {
+			trav=trav.next;
+		}
+		trav.next=null;
+	}
+	public void display() {
+		Node trav = head;
+		while (trav != null) {
+			System.out.println(trav.data + " ");
+			trav = trav.next;
+		}
+	}
+
+}
+
+
+main
+
+
+package doublypractice;
+
+import java.util.Scanner;
+
+public class main {
+
+	public static void main(String[] args) {
+		try(Scanner sc =new Scanner(System.in)){
+			doubleLinkedList d1= new doubleLinkedList();
+			boolean exit=false;
+			while (!exit) {
+				System.out.println("0.display\n1.addfirst\n2.addlast");
+				try {
+					switch(sc.nextInt()) {
+					case 0:
+						d1.display();
+						break;
+					case 1:
+						d1.addfirst(12);
+						d1.addfirst(13);
+						d1.addfirst(14);
+						d1.addfirst(15);
+						d1.addfirst(16);
+						break;
+					case 2:
+						d1.addlast(18);
+						break;
+					case 3:
+						d1.Atmiddleadd(44, 3);
+						break;
+					case 4:
+						d1.deletefirst();
+						break;
+					case 5:
+						d1.deletelast();
+						break;
+					}
+				}catch (Exception e) {
+					sc.nextLine();
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+}
+
